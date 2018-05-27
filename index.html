@@ -56,9 +56,7 @@
                 for (var row=0; row < x; row++) {
                     html += '<div class="row">';
                     for (var col=0; col < x; col++) {
-                        var trackColor = randomColor();
-                        colorArray.push(trackColor);
-                        html += '<div class="cell" style="background-color:'+trackColor+'">0</div>';
+                        html += '<div class="cell" style="background-color:'+addNewColor()+'">0</div>';
                     }
                     html +='</div>';
                 }
@@ -82,8 +80,23 @@
                 $('#findme').css('background-color',picked);
             }
             
+            function addNewColor(){
+                var trackColor = randomColor();
+                colorArray.push(trackColor);
+                return trackColor;
+            }
+            
             function checkCell(){
                 var curColor = $(this).css('background-color');
+                if(curColor == $('#findme').css('background-color')){
+                    var cntValue =Number($(this).text());
+                    cntValue++;
+                    $(this).text(cntValue);
+                    $(this).css('backgroundColor',addNewColor());
+                    pickMyColor();
+                } else {
+                    console.log('Wrong');
+                }
             }
             
             function randomColor(){
