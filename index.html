@@ -9,37 +9,71 @@
 
 <body>
     <div id="start">Start Game</div>
-    <div id="findme">Match the color<br>
-        <span id="message"></span>
+    <div id="gamearea">
+        <div id="findme">Match the color<br>
+        </div>
+        <div id="output"></div>
     </div>
-    <div id="output"></div>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $('#output').hide();
+        $(document).ready(function() {
+            $('#gamearea').hide();
             $('#start').click(startGame);
             $('#start').css({
-                border:'1px solid black',
-                textAlign:'center',
-                padding:'10px',
-                width:'150px',
-                backgroundColor:'red',
-                fontSize:'2em',
-                marginBottom:'10px'
+                border: '1px solid black',
+                textAlign: 'center',
+                padding: '10px',
+                width: '150px',
+                backgroundColor: 'red',
+                fontSize: '2em',
+                marginBottom: '10px',
+                color:'white'
             })
-            
+
             $('#findme').css({
-                border:'1px solid black',
-                textAlign:'center',
-                padding:'0',
-                width:'400px',
-                fontSize:'2em',
-                height:'100px',
-                display:'inline-block'
+                border: '1px solid black',
+                textAlign: 'center',
+                padding: '0',
+                width: '400px',
+                fontSize: '2em',
+                height: '100px',
+                display: 'inline-block'
             })
-            
-            function startGame(){
+
+            function startGame() {
+                makeBoard();
+                pickMyColor();
+                $('#start').hide();
+                $('#gamearea').show();
                 console.log('game started')
+            }
+
+            function makeBoard() {
+                var x = 4;
+                var html = '';
+                for (var row=0; row < x; row++) {
+                    html += '<div class="row">';
+                    for (var col=0; col < x; col++) {
+                        html += '<div class="cell">0</div>';
+                    }
+                    html +='</div>';
+                }
+                $('#output').html(html);
+                $(".cell").css({
+                    border:'1px solid black',
+                    textAlign:'center',
+                    padding:'0',
+                    margin:'0',
+                    width:'100px',
+                    height:'100px',
+                    fontSize:'2em',
+                    color:'black',
+                    display:'inline-block'
+                })
+            }
+
+            function pickMyColor() {
+
             }
         })
     </script>
