@@ -20,6 +20,7 @@
             var colorArray = [];
             $('#gamearea').hide();
             $('#start').click(startGame);
+            $('#output').on('click','.cell',checkCell);
             $('#start').css({
                 border: '1px solid black',
                 textAlign: 'center',
@@ -76,7 +77,13 @@
             }
 
             function pickMyColor() {
-
+                var index = Math.floor(Math.random()*colorArray.length);
+                var picked = colorArray.splice(index,1);
+                $('#findme').css('background-color',picked);
+            }
+            
+            function checkCell(){
+                var curColor = $(this).css('background-color');
             }
             
             function randomColor(){
