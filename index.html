@@ -17,6 +17,7 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script>
         $(document).ready(function() {
+            var colorArray = [];
             $('#gamearea').hide();
             $('#start').click(startGame);
             $('#start').css({
@@ -54,7 +55,9 @@
                 for (var row=0; row < x; row++) {
                     html += '<div class="row">';
                     for (var col=0; col < x; col++) {
-                        html += '<div class="cell">0</div>';
+                        var trackColor = randomColor();
+                        colorArray.push(trackColor);
+                        html += '<div class="cell" style="background-color:'+trackColor+'">0</div>';
                     }
                     html +='</div>';
                 }
@@ -75,7 +78,11 @@
             function pickMyColor() {
 
             }
-        })
+            
+            function randomColor(){
+                return '#'+((1<<24)*Math.random() | 0).toString(16);
+            }
+        });
     </script>
 </body>
 
