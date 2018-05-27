@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,41 @@
 </head>
 
 <body>
- <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <div id="start">Start Game</div>
+    <div id="findme">Match the color<br>
+        <span id="message"></span>
+    </div>
+    <div id="output"></div>
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#output').hide();
+            $('#start').click(startGame);
+            $('#start').css({
+                border:'1px solid black',
+                textAlign:'center',
+                padding:'10px',
+                width:'150px',
+                backgroundColor:'red',
+                fontSize:'2em',
+                marginBottom:'10px'
+            })
+            
+            $('#findme').css({
+                border:'1px solid black',
+                textAlign:'center',
+                padding:'0',
+                width:'400px',
+                fontSize:'2em',
+                height:'100px',
+                display:'inline-block'
+            })
+            
+            function startGame(){
+                console.log('game started')
+            }
+        })
+    </script>
 </body>
+
 </html>
